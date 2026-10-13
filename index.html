@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0a1428">
+<title>Martha Owusu | IT Student &amp; Web Developer</title>
+<meta name="description" content="Portfolio of Martha Owusu, an Information Technology student interested in web development, cybersecurity, and technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0a1428; --surface:#12203b; --ink:#ffffff; --muted:#b9c6de; --line:#243759;
+  --accent:#2dd4bf; --accent-ink:#04121f; --warm:#67e8f9; --code-bg:#07101f; --code-ink:#e6eefb;
+  --code-key:#5eead4; --code-str:#9fd8ff; --code-dim:#94a7c6;
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(5rem + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
+.skip{position:absolute;left:1rem;top:-4rem;background:var(--accent);color:var(--accent-ink);padding:.6rem 1rem;border-radius:6px;z-index:100;text-decoration:none;font-weight:600}
+.skip:focus{top:.75rem}
+
+/* Header */
+header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;min-height:4.25rem;gap:1rem}
+.brand{font:800 1.25rem var(--head);text-decoration:none;letter-spacing:-.02em}
+.brand span{color:var(--accent)}
+nav ul{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}
+nav a{display:block;padding:.5rem .9rem;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;font-size:.98rem}
+nav a:hover{color:var(--ink);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+nav a[aria-current="true"]{color:var(--accent-ink);background:var(--accent)}
+.menu-btn{display:none;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.5rem .8rem;font:600 .95rem var(--body);cursor:pointer}
+
+/* Hero / About */
+.hero{padding:clamp(3rem,8vw,6rem) 0 clamp(3rem,6vw,5rem)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero h1{font-size:clamp(2.6rem,7vw,4.8rem);font-weight:800}
+.role{margin-top:1rem;font:500 1rem var(--mono);color:var(--accent)}
+.hero p.lead{margin-top:1.25rem;font-size:1.2rem;color:var(--muted);max-width:34rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent)}
+.btn:hover{transform:translateY(-2px)}
+.btn{transition:transform .15s}
+.code{background:var(--code-bg);color:var(--code-ink);border:1px solid var(--line);border-radius:14px;font:400 .93rem/1.7 var(--mono);overflow:hidden;box-shadow:0 18px 40px -22px rgba(10,20,40,.55)}
+.code-top{display:flex;gap:.45rem;padding:.75rem 1rem;border-bottom:1px solid rgba(255,255,255,.08);align-items:center}
+.code-top i{width:.7rem;height:.7rem;border-radius:50%;background:#3b4a68;display:block}
+.code-top span{margin-left:.5rem;color:var(--code-dim);font-size:.8rem}
+.code pre{margin:0;padding:1.1rem 1.25rem 1.3rem;overflow-x:auto}
+.k{color:var(--code-key)}.s{color:var(--code-str)}.d{color:var(--code-dim)}
+.about{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:3rem}
+
+section.block{padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--line)}
+.sec-head{max-width:40rem;margin-bottom:2.25rem}
+.sec-head h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800}
+.sec-head p{margin-top:.75rem;color:var(--muted)}
+
+.interest{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.4rem}
+.interest h3{font-size:1.15rem;margin-bottom:.4rem}
+.interest p{color:var(--muted);font-size:1rem}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;list-style:none;margin:0;padding:0}
+.skill{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:12px;padding:1.2rem 1.3rem}
+.skill:nth-child(even){border-left-color:var(--warm)}
+.skill h3{font-size:1.2rem;margin-bottom:.35rem}
+.skill p{color:var(--muted);font-size:1rem}
+
+/* Projects */
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+@media (hover:hover) and (pointer:fine){
+  .card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 18px 32px -16px rgba(0,0,0,.7),0 0 0 1px color-mix(in srgb,var(--accent) 35%,transparent),0 0 28px -10px color-mix(in srgb,var(--accent) 45%,transparent)}
+}
+.thumb{height:11rem;background:var(--code-bg);display:grid;place-items:center;padding:1.2rem}
+.mock{width:100%;height:100%;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:.6rem;display:grid;gap:.4rem}
+.mock b{display:block;border-radius:4px;background:rgba(255,255,255,.18)}
+.mock .hl{background:var(--code-key)}.mock .wm{background:var(--code-str)}
+.m1{grid-template-rows:.6rem 1.6rem 1fr}.m1 .row{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.m2{grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr}
+.m3{grid-template-rows:1.4rem 1fr}.m3 .row{display:flex;gap:.4rem;align-items:flex-end}.m3 .row b{flex:1}
+.m4{grid-template-columns:3.2rem 1fr;grid-template-rows:1fr 1fr}.m4 .side{grid-row:1/3}
+.card-body{padding:1.4rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.75rem;flex:1}
+.card h3{font-size:1.4rem}
+.card p{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto;padding-top:.4rem;list-style:none;margin-bottom:0;margin-inline:0;padding-inline:0}
+.tags li{font:500 .8rem var(--mono);padding:.2rem .6rem;border-radius:6px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+
+footer{border-top:1px solid var(--line);padding:2rem 0 2.5rem;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem}
+
+@media (max-width:860px){
+  .hero-grid,.projects{grid-template-columns:1fr}
+  .about,.skills{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .menu-btn{display:block}
+  nav{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;padding:.75rem 1.25rem 1rem}
+  nav a{border-radius:10px;padding:.75rem 1rem}
+  .about,.skills{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.card{transition:none}.btn:hover,.card:hover{transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Martha Owusu, back to top">Martha<span> Owusu</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 id="hero-title">Martha Owusu</h1>
+        <p class="role">Information Technology student</p>
+        <p class="lead">I build responsive websites and I'm learning how to keep them secure. Web development and cybersecurity are where I'm putting my energy.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View my projects</a>
+          <a class="btn ghost" href="#about">About me</a>
+        </div>
+      </div>
+      <div class="code" role="img" aria-label="A code snippet describing Martha Owusu: studying Information Technology, focused on web development, cybersecurity and technology.">
+        <div class="code-top"><i></i><i></i><i></i><span>martha.js</span></div>
+<pre aria-hidden="true"><span class="k">const</span> martha = {
+  <span class="k">studying</span>: <span class="s">"Information Technology"</span>,
+  <span class="k">focus</span>: [
+    <span class="s">"Web development"</span>,
+    <span class="s">"Cybersecurity"</span>,
+    <span class="s">"Technology"</span>
+  ],
+  <span class="k">building</span>: <span class="s">"React projects"</span>,
+  <span class="k">learning</span>: <span class="s">"every day"</span>
+};</pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="about-title">About me</h2>
+        <p>I'm an Information Technology student who enjoys turning ideas into working websites. I like understanding how the web is built, and how it can be protected. I'm building a portfolio of projects that shows what I can do and how I'm growing.</p>
+      </div>
+      <div class="about">
+        <div class="interest"><h3>Web development</h3><p>Designing and coding clean, accessible pages that work on any screen.</p></div>
+        <div class="interest"><h3>Cybersecurity</h3><p>Learning how systems are attacked and defended, so I can build safer software.</p></div>
+        <div class="interest"><h3>Technology</h3><p>Staying curious about new tools, frameworks and the ideas shaping IT.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="skills-title">Skills</h2>
+        <p>The tools and habits I use to build for the web.</p>
+      </div>
+      <ul class="skills">
+        <li class="skill"><h3>HTML</h3><p>Semantic, accessible page structure.</p></li>
+        <li class="skill"><h3>CSS</h3><p>Flexbox, grid and thoughtful typography.</p></li>
+        <li class="skill"><h3>JavaScript</h3><p>DOM manipulation and interactive features.</p></li>
+        <li class="skill"><h3>React</h3><p>Reusable components and state-driven interfaces.</p></li>
+        <li class="skill"><h3>Responsive web design</h3><p>Layouts that adapt from phones to desktops.</p></li>
+        <li class="skill"><h3>Problem-solving</h3><p>Breaking problems into steps and debugging patiently.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="projects" aria-labelledby="projects-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="projects-title">Projects</h2>
+        <p>Four projects that show how my web development skills have grown.</p>
+      </div>
+      <div class="projects">
+        <article class="card">
+          <div class="thumb" aria-hidden="true"><div class="mock m1"><b></b><b class="hl"></b><div class="row"><b></b><b></b></div></div></div>
+          <div class="card-body">
+            <h3>Personal Portfolio Website</h3>
+            <p>A multi-section site that introduces who I am, what I know and what I've built, with navigation that works on every device.</p>
+            <ul class="tags" aria-label="Technologies"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb" aria-hidden="true"><div class="mock m2"><b class="hl"></b><b></b><b></b><b></b><b class="wm"></b><b></b></div></div>
+          <div class="card-body">
+            <h3>Responsive Portfolio Gallery</h3>
+            <p>An image and project gallery whose grid reflows smoothly between mobile, tablet and desktop screens.</p>
+            <ul class="tags" aria-label="Technologies"><li>CSS Grid</li><li>Flexbox</li><li>Media queries</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb" aria-hidden="true"><div class="mock m3"><b class="wm"></b><div class="row"><b style="height:40%"></b><b class="hl" style="height:80%"></b><b style="height:60%"></b><b style="height:30%"></b></div></div></div>
+          <div class="card-body">
+            <h3>JavaScript DOM Lab</h3>
+            <p>A set of hands-on exercises in selecting, creating and updating page elements and responding to user events.</p>
+            <ul class="tags" aria-label="Technologies"><li>JavaScript</li><li>DOM</li><li>Events</li></ul>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb" aria-hidden="true"><div class="mock m4"><b class="side hl"></b><b></b><b class="wm"></b></div></div>
+          <div class="card-body">
+            <h3>React Portfolio Dashboard</h3>
+            <p>A component-based dashboard for organising and displaying my work, built with React state and reusable pieces.</p>
+            <ul class="tags" aria-label="Technologies"><li>React</li><li>Components</li><li>State</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; <span id="year">2026</span> Martha Owusu</p>
+    <p>Information Technology student</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'), nav=document.getElementById('nav');
+  function setMenu(open){nav.classList.toggle('open',open);btn.setAttribute('aria-expanded',String(open));btn.textContent=open?'Close':'Menu';}
+  btn.addEventListener('click',function(){setMenu(!nav.classList.contains('open'));});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A')setMenu(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false);btn.focus();}});
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  var links=[].slice.call(nav.querySelectorAll('a'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          links.forEach(function(l){l.removeAttribute('aria-current');if(l.getAttribute('href')==='#'+en.target.id)l.setAttribute('aria-current','true');});
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    ['about','skills','projects'].forEach(function(id){io.observe(document.getElementById(id));});
+  }
+})();
+</script>
+</body>
+</html>
