@@ -24,7 +24,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(5rem + env(safe-area-inset-top,0px))}
-body{margin:0;background:var(--bg);color:var(--ink);font:1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
 h1,h2,h3{font-family:var(--head);line-height:1.1;margin:0;letter-spacing:-.02em}
 p{margin:0}
 a{color:inherit}
@@ -42,16 +42,24 @@ nav ul{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}
 nav a{display:block;padding:.5rem .9rem;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:600;font-size:.98rem}
 nav a:hover{color:var(--ink);background:color-mix(in srgb,var(--accent) 12%,transparent)}
 nav a[aria-current="true"]{color:var(--accent-ink);background:var(--accent)}
-.menu-btn{display:none;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.5rem .8rem;font:600 .95rem var(--body);cursor:pointer}
+.menu-btn{display:none;align-items:center;gap:.6rem;min-height:2.75rem;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.5rem .9rem;font:600 1rem var(--body);cursor:pointer}
+.burger,.burger::before,.burger::after{display:block;width:1.1rem;height:2px;background:currentColor;border-radius:2px;transition:transform .2s,background .2s}
+.burger{position:relative}
+.burger::before,.burger::after{content:"";position:absolute;left:0}
+.burger::before{top:-6px}.burger::after{top:6px}
+.menu-btn[aria-expanded="true"] .burger{background:transparent}
+.menu-btn[aria-expanded="true"] .burger::before{transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] .burger::after{transform:translateY(-6px) rotate(-45deg)}
 
 /* Hero / About */
 .hero{padding:clamp(3rem,8vw,6rem) 0 clamp(3rem,6vw,5rem)}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-.hero h1{font-size:clamp(2.6rem,7vw,4.8rem);font-weight:800}
+.hero h1{font-size:clamp(2.2rem,10vw,4.8rem);font-weight:800;overflow-wrap:break-word}
+.hero-grid>*{min-width:0}
 .role{margin-top:1rem;font:500 1rem var(--mono);color:var(--accent)}
-.hero p.lead{margin-top:1.25rem;font-size:1.2rem;color:var(--muted);max-width:34rem}
+.hero p.lead{margin-top:1.25rem;font-size:clamp(1.05rem,3.6vw,1.2rem);color:var(--muted);max-width:34rem}
 .cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
-.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3rem;padding:.7rem 1.4rem;border-radius:10px;font-weight:600;text-align:center;text-decoration:none;border:2px solid var(--accent)}
 .btn.primary{background:var(--accent);color:var(--accent-ink)}
 .btn.ghost{color:var(--accent)}
 .btn:hover{transform:translateY(-2px)}
@@ -104,16 +112,31 @@ footer{border-top:1px solid var(--line);padding:2rem 0 2.5rem;color:var(--muted)
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem}
 
 @media (max-width:860px){
-  .hero-grid,.projects{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:1fr}
   .about,.skills{grid-template-columns:1fr 1fr}
+  .about .interest:last-child{grid-column:1/-1}
+}
+@media (max-width:700px){
+  .projects{grid-template-columns:1fr}
+  .thumb{height:9.5rem}
 }
 @media (max-width:640px){
-  .menu-btn{display:block}
-  nav{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  .menu-btn{display:inline-flex}
+  nav{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);display:none;box-shadow:0 18px 30px -18px rgba(0,0,0,.8)}
   nav.open{display:block}
-  nav ul{flex-direction:column;padding:.75rem 1.25rem 1rem}
-  nav a{border-radius:10px;padding:.75rem 1rem}
+  nav ul{flex-direction:column;gap:.35rem;padding:.75rem 1.25rem 1.25rem}
+  nav a{display:flex;align-items:center;min-height:3rem;border-radius:10px;padding:.5rem 1rem;font-size:1.05rem;border:1px solid var(--line);background:var(--surface)}
+}
+@media (max-width:520px){
   .about,.skills{grid-template-columns:1fr}
+  .cta{flex-direction:column}
+  .btn{width:100%}
+  .code{font-size:.82rem}
+  .code pre{padding:1rem}
+  .interest,.skill{padding:1.1rem}
+  .card-body{padding:1.2rem}
+  .wrap{width:calc(100% - 2rem)}
+  footer .wrap{flex-direction:column}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.card{transition:none}.btn:hover,.card:hover{transform:none}}
 </style>
@@ -124,7 +147,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75re
 <header class="site">
   <div class="wrap bar">
     <a class="brand" href="#top" aria-label="Martha Owusu, back to top">Martha<span> Owusu</span></a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav"><span class="burger" aria-hidden="true"></span><span id="menuLabel">Menu</span></button>
     <nav id="nav" aria-label="Main navigation">
       <ul>
         <li><a href="#about">About</a></li>
@@ -248,7 +271,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75re
 <script>
 (function(){
   var btn=document.getElementById('menuBtn'), nav=document.getElementById('nav');
-  function setMenu(open){nav.classList.toggle('open',open);btn.setAttribute('aria-expanded',String(open));btn.textContent=open?'Close':'Menu';}
+  var label=document.getElementById('menuLabel');
+  function setMenu(open){nav.classList.toggle('open',open);btn.setAttribute('aria-expanded',String(open));label.textContent=open?'Close':'Menu';}
+  document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!nav.contains(e.target)&&!btn.contains(e.target))setMenu(false);});
+  window.addEventListener('resize',function(){if(window.innerWidth>640&&nav.classList.contains('open'))setMenu(false);});
   btn.addEventListener('click',function(){setMenu(!nav.classList.contains('open'));});
   nav.addEventListener('click',function(e){if(e.target.tagName==='A')setMenu(false);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false);btn.focus();}});
